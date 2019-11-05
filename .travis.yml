@@ -50,6 +50,6 @@ script:
     fi
 
 
-  - make
+  - sudo g++ *.cpp -o test
 
 
