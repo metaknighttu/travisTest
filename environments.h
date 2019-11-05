@@ -12,7 +12,7 @@ class environments : public QDialog
     Q_OBJECT
 
 public:
-    explicit environments(QWidget *parent = nullptr);
+    explicit environments(QWidget *parent = NULL);
     ~environments();
 
 private:
