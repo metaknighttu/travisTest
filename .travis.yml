@@ -1,6 +1,55 @@
 language: cpp
+os: linux
 compiler: gcc
+sudo: required
+dist: trusty
+
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - g++-4.8
+
+
+    coverity_scan:
+      project:
+        name: "solidSnek/TESTTravis"
+        description: "Build submitted via Travis CI of application"
+      notification_email: metaknighttu@gmail.com
+      build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
+      build_command:   "make VERBOSE=1"
+      branch_pattern: coverity_scan
+
+before_install:
+  # repo for Qt
+  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+  - sudo apt-get -qq update
+
+install:
+  - sudo apt-get --yes install qt55base qt55imageformats qt55svg
+  - export CXX="g++-4.8"
+  - export CC="gcc-4.8"
+
+before_script:
+  # Qt variables
+  - QTDIR="/opt/qt55"
+  - PATH="$QTDIR/bin:$PATH"
+  - source /opt/qt55/bin/qt55-env.sh
+
+
+  # cmake build of the project
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/qt55/lib/cmake 
+
 
 script:
-- g++ hello.cpp -o travisTest
-- ./travisTest
+  - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]];
+      then
+        echo "Don't build on coverty_scan branch.";
+        exit 0;
+    fi
+
+
+  - make
+
+
