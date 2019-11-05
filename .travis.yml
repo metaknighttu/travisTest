@@ -28,6 +28,7 @@ before_install:
 
 install:
   - sudo apt-get --yes install qt55base qt55imageformats qt55svg
+  - sudo apt-get --yes install sqlite3 
   - export CXX="g++-4.8"
   - export CC="gcc-4.8"
 

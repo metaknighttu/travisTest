@@ -12,7 +12,7 @@ class guarantee : public QDialog
     Q_OBJECT
 
 public:
-    explicit guarantee(QWidget *parent = nullptr);
+    explicit guarantee(QWidget *parent = NULL);
     ~guarantee();
 
 private:

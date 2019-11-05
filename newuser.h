@@ -12,7 +12,7 @@ class newuser : public QDialog
     Q_OBJECT
 
 public:
-    explicit newuser(QWidget *parent = nullptr);
+    explicit newuser(QWidget *parent = NULL);
     ~newuser();
 
 private slots:
