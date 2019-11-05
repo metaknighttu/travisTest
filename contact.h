@@ -12,7 +12,7 @@ class contact : public QDialog
     Q_OBJECT
 
 public:
-    explicit contact(QWidget *parent = nullptr);
+    explicit contact(QWidget *parent = NULL);
     ~contact();
 
 private:
