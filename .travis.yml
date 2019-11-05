@@ -39,7 +39,7 @@ before_script:
 
 
   # cmake build of the project
-  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/qt55/lib/cmake 
+#  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/qt55/lib/cmake 
 
 
 script:
@@ -50,6 +50,8 @@ script:
     fi
 
 
-  - sudo g++ *.cpp -o test
+  - sudo qmake BubbleHelper.pro
+
+  - sudo make
 
 
